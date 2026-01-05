@@ -1,8 +1,8 @@
 -- premake5.lua
-workspace "PheonProject"
+workspace "BreakoutProject"
    architecture "x64"
    configurations { "Debug", "Release", "Dist" }
-   startproject "PheonProject"
+   startproject "BreaoutProject"
 
    -- Workspace-wide build options for MSVC
    filter "system:windows"
@@ -11,4 +11,4 @@ workspace "PheonProject"
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 include "vendor/Pheon/Pheon/Build-Pheon.lua"
-include "ExampleProject/Build-Pheon-Project.lua"
+include "BreakoutProject/Build-Breakout-Project.lua"

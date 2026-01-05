@@ -1,4 +1,4 @@
-project "PheonProject"
+project "BreakoutProject"
    kind "ConsoleApp"
    language "C++"
    cppdialect "C++latest"
