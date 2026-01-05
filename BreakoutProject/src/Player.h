@@ -1,8 +1,5 @@
 #pragma once
-#include "SDL3/SDL.h"
-#include "PheonUtils.h"
-#include "PheonApplication.h"
-#include "PheonWidgets.h"
+#include "Ball.h"
 
 class Player
 {
@@ -17,12 +14,23 @@ public:
 
 	void Render() 
 	{
+		if (HasBallBeenShot) 
+		{
+			ball.Update();
+		}
+
 		Pheon::Utils::SetRenderColour(m_Application->m_Renderer,PlayerColour);
 		SDL_RenderFillRect(m_Application->m_Renderer, &m_Rect);
 	}
 
 	void Translate(int x) 
 	{
+		if (!HasBallBeenShot) 
+		{
+			ball.Position = { m_Rect.x + (m_Rect.w / 2), m_Rect.y - 10 };
+			HasBallBeenShot = true;
+		}
+
 		if (m_Rect.x >= 0 && m_Rect.x <= 600 - m_Rect.w) 
 		{
 			m_Rect.x += x;
@@ -38,11 +46,16 @@ public:
 	}
 
 private:
+
+private:
+	
+	Pheon::Application* m_Application;
+
+	Ball ball{ m_Application };
+
+	bool HasBallBeenShot = false;
 	
 	SDL_FRect m_Rect{ 10, 10, 40, 15 };
 	const SDL_Color PlayerColour{ 50, 225, 255, 255 };
-
-	Pheon::Application* m_Application;
-
 };
 

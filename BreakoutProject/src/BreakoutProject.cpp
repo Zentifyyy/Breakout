@@ -2,7 +2,6 @@
 #include "PheonWidgets.h"
 
 #include "Player.h"
-#include <iostream>
 
 class BreakoutProject : public Pheon::Application {
 public:
