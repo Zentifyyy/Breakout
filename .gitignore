@@ -1,0 +1,18 @@
+# Directories
+.vs/
+.output/
+
+# Files
+*.vcxproj
+*.vcxproj.user
+*.vcxproj.filters
+*.sln
+
+# Exclude
+/output
+/Renderer/bin
+/Renderer/obj
+/x64
+/Pheon/obj
+/Pheon/bin
+TODO.txt
