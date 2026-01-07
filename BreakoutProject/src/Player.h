@@ -1,5 +1,6 @@
 #pragma once
 #include "Ball.h"
+#include "Bricks.h"
 
 class Player
 {
@@ -19,6 +20,8 @@ public:
 			ball.Update();
 		}
 
+		bricks.Update();
+
 		Pheon::Utils::SetRenderColour(m_Application->m_Renderer,PlayerColour);
 		SDL_RenderFillRect(m_Application->m_Renderer, &m_Rect);
 	}
@@ -28,6 +31,7 @@ public:
 		if (!HasBallBeenShot) 
 		{
 			ball.Position = { m_Rect.x + (m_Rect.w / 2), m_Rect.y - 10 };
+			ball.Velocity.x = x * 0.1f;
 			HasBallBeenShot = true;
 		}
 
@@ -46,12 +50,11 @@ public:
 	}
 
 private:
-
-private:
 	
 	Pheon::Application* m_Application;
 
 	Ball ball{ m_Application };
+	Bricks bricks{ &ball, m_Application };
 
 	bool HasBallBeenShot = false;
 	

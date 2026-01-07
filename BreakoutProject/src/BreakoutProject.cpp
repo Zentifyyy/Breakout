@@ -34,7 +34,7 @@ public:
 
 private:
 
-	SDL_FRect ButtonRect{200,200,100,50};
+	SDL_FRect ButtonRect{0,0,100,50};
 	Pheon::Widgets::Button testtwo{ "Hello", ButtonRect,this };
 
 	Player player{ this };
@@ -46,7 +46,7 @@ int main()
 	TTF_Init();
 
 	BreakoutProject BreakoutProject("Breakout", 600,900, SDL_WINDOW_RESIZABLE,"img/icon.bmp");
-	BreakoutProject.InitLoop(20);
+	BreakoutProject.InitLoop(30);
 
 	TTF_Quit();
 }
