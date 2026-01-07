@@ -1,8 +1,6 @@
 #pragma once
-#include "SDL3/SDL.h"
 #include "PheonUtils.h"
 #include "PheonApplication.h"
-#include "PheonWidgets.h"
 
 class Ball
 {

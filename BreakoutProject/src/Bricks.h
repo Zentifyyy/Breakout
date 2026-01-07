@@ -1,17 +1,13 @@
 #pragma once
 #include "Ball.h"
-#include "PheonUtils.h"
-#include "PheonApplication.h"
-
 #include <vector>
-#include <random>
-#include <iostream>
 
 class Bricks
 {
 public:
 
-	Bricks(const Ball* ball, Pheon::Application* app): m_Ball(ball), m_Application(app) {};
+	Bricks(const Ball* ball, int& Score, Pheon::Application* app) : m_Ball(ball), m_Application(app),
+	m_Score(Score){};
 
 	void Update() 
 	{
@@ -19,8 +15,8 @@ public:
 		{
 			if (SDL_HasRectIntersectionFloat(&m_Rects[i], &m_Ball->m_Rect))
 			{
+				m_Score += 100;
 				m_Rects.erase(m_Rects.begin() + i);
-				std::cout << "ball hit something\n";
 			}
 			else
 			{
@@ -30,24 +26,11 @@ public:
 		}
 	}
 
-	bool RectCollisionCheck(const SDL_FRect& Rect1Pos, const SDL_FRect& Rect2Pos)
-	{
-		std::cout << Rect1Pos.x << ' ' << Rect1Pos.y << '\n';
-
-		if (Rect1Pos.x > Rect2Pos.x && Rect1Pos.x + Rect1Pos.w < Rect2Pos.x + Rect2Pos.w)
-		{
-			if (Rect1Pos.y > Rect2Pos.y && Rect1Pos.y + Rect1Pos.h < Rect2Pos.y + Rect2Pos.h)
-				return true;
-			else
-				return false;
-		}
-
-		return false;
-	}
-
 private:
 
 	const Ball* m_Ball;
+
+	int& m_Score;
 
 	Pheon::Application* m_Application;
 

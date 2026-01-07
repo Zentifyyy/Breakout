@@ -14,7 +14,6 @@ public:
 	{
 		if (Event.type == SDL_EVENT_WINDOW_RESIZED || Event.type == SDL_EVENT_WINDOW_SHOWN)
 		{
-			
 		}
 
 		if (!Event.key.down) return;
@@ -29,13 +28,16 @@ public:
 
 	void Update() override
 	{
+		if (ExitButton)
+			CloseWindow();
+
 		player.Render();
 	}
 
 private:
 
-	SDL_FRect ButtonRect{0,0,100,50};
-	Pheon::Widgets::Button testtwo{ "Hello", ButtonRect,this };
+	SDL_FRect ButtonRect{ 490,840,100,50 };
+	Pheon::Widgets::Button ExitButton{ "Exit", ButtonRect,this };
 
 	Player player{ this };
 	
