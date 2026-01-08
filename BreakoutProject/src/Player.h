@@ -23,8 +23,8 @@ private:
 
 	int Score{};
 
-	Pheon::Vector2 m_ScorePos{10,10};
-	Pheon::Widgets::Label m_Score{ "0", &m_ScorePos, 0.5f, m_Application };
+	Pheon::Vector2 m_ScorePos{ 20,10 };
+	Pheon::Widgets::Label m_Score{ "0", &m_ScorePos, 0.4f, m_Application };
 
 	Ball ball{ m_Application };
 	Bricks bricks{ &ball, Score ,m_Application };
