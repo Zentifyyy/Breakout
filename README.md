@@ -1,5 +1,10 @@
-# Pheon Breakout
+# Breakout
 This is an example Breakout project using the Pheon quickstart template and [Pheon](https://github.com/Zentifyyy/Pheon) as a dependency.
+
+<p align="middle">
+<img src="https://raw.githubusercontent.com/Zentifyyy/Breakout/refs/heads/main/ShowOff.png" width = 400>
+<img src="https://raw.githubusercontent.com/Zentifyyy/Breakout/refs/heads/main/ShowOff2.png" width = 400>
+</p>
 
 # Building
 #### These instructions will be for windows only, support for other platforms will come in the future.
