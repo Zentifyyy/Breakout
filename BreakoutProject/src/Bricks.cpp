@@ -1,8 +1,28 @@
 #include "Bricks.h"
-#include <iostream>
 
 Bricks::Bricks(Ball* ball, int& Score, Pheon::Application* app) 
-	: m_Ball(ball), m_Application(app), m_Score(Score){}
+	: m_Ball(ball), m_Application(app), m_Score(Score)
+{
+	ResetBricks();
+}
+
+void Bricks::ResetBricks() 
+{
+	if (!m_Rects.empty()) 
+		m_Rects.erase(m_Rects.begin(), m_Rects.end());
+
+	for (auto i = 0; i < m_NumRows; i++) 
+	{
+		const int x = ((rectSize.x + 10) * i) + rectOffset.x;
+
+		for(auto k = 0; k < m_NumColums; k++)
+		{
+			const int y = ((rectSize.y + 10) * k) + rectOffset.y;
+			const SDL_FRect rect = { x,y,rectSize.x,rectSize.y };
+			m_Rects.emplace_back(rect);
+		}
+	}
+}
 
 void Bricks::Update()
 {
@@ -21,9 +41,6 @@ void Bricks::Update()
 			{
 				m_Ball->Velocity.x *= -1;
 			}
-
-			std::cout << m_Ball->Position.x << ' ';
-			std::cout << m_Ball->Position.y << '\n';
 		}
 		else
 		{

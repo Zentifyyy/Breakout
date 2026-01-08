@@ -32,7 +32,7 @@ public:
 
 private:
 
-	SDL_FRect ButtonRect{ 490,840,100,50 };
+	SDL_FRect ButtonRect{ 650,840,100,50 };
 	Pheon::Widgets::Button ExitButton{ "Exit", ButtonRect,this };
 
 	Player player{ this };
@@ -43,8 +43,8 @@ int main()
 {
 	TTF_Init();
 
-	BreakoutProject BreakoutProject("Breakout", 600,900, SDL_WINDOW_RESIZABLE,"img/icon.bmp");
-	BreakoutProject.InitLoop(30);
+	BreakoutProject BreakoutProject("Breakout", 760,900, SDL_WINDOW_RESIZABLE,"img/icon.bmp");
+	BreakoutProject.InitLoop(60);
 
 	TTF_Quit();
 }

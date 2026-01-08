@@ -4,21 +4,18 @@ Player::Player(Pheon::Application* App)
 	: m_Application(App)
 {
 	m_Rect.y = 900 - (m_Rect.h + 200);
-	m_Rect.x = 300 - (m_Rect.w / 2);
+	m_Rect.x = 760 / 2 - (m_Rect.w / 2);
 }
 
 void Player::Render() 
 {
 	if (HasBallBeenShot)
-	{
 		ball.Update();
-	}
-
-	if (SDL_HasRectIntersectionFloat(&m_Rect, &ball.m_Rect)) 
-	{
+	
+	if (SDL_HasRectIntersectionFloat(&m_Rect, &ball.m_Rect))
 		ball.Velocity.y *= -1;
-	}
-
+	else if (ball.Position.y >= 900)
+			RestartGame();
 
 	bricks.Update();
 
@@ -37,7 +34,7 @@ void Player::Translate(int x)
 		HasBallBeenShot = true;
 	}
 
-	if (m_Rect.x >= 0 && m_Rect.x <= 600 - m_Rect.w)
+	if (m_Rect.x >= 0 && m_Rect.x <= 760 - m_Rect.w)
 	{
 		m_Rect.x += x;
 	}
@@ -45,8 +42,19 @@ void Player::Translate(int x)
 	{
 		m_Rect.x = 0;
 	}
-	else if (m_Rect.y >= 600 - m_Rect.w)
+	else if (m_Rect.y >= 760 - m_Rect.w)
 	{
 		m_Rect.x = 600 - m_Rect.w;
 	}
+}
+
+void Player::RestartGame() 
+{
+	Score = 0;
+	m_Score.UpdateText("0");
+	HasBallBeenShot = false;
+	bricks.ResetBricks();
+
+	m_Rect.y = 900 - (m_Rect.h + 200);
+	m_Rect.x = 760 / 2 - (m_Rect.w / 2);
 }

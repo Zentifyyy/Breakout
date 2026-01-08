@@ -22,5 +22,6 @@ private:
 
 	Pheon::Application* m_Application;
 
+	float m_Speed = 3;
 };
 

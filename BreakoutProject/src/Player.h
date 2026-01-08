@@ -15,15 +15,16 @@ public:
 
 	void Translate(int x);
 
+	void RestartGame();
+
 private:
 	
 	Pheon::Application* m_Application;
 
 	int Score{};
 
-	const char* m_ScoreText = "Score: 0";
 	Pheon::Vector2 m_ScorePos{10,10};
-	Pheon::Widgets::Label m_Score{ m_ScoreText, &m_ScorePos, 0.5f, m_Application };
+	Pheon::Widgets::Label m_Score{ "0", &m_ScorePos, 0.5f, m_Application };
 
 	Ball ball{ m_Application };
 	Bricks bricks{ &ball, Score ,m_Application };
