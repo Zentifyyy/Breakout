@@ -12,10 +12,6 @@ public:
 
 	void OnEvent(const SDL_Event& Event) override
 	{
-		if (Event.type == SDL_EVENT_WINDOW_RESIZED || Event.type == SDL_EVENT_WINDOW_SHOWN)
-		{
-		}
-
 		if (!Event.key.down) return;
 
 		if (Event.key.key == SDLK_A) {

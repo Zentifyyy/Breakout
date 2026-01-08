@@ -6,13 +6,13 @@ class Bricks
 {
 public:
 
-	Bricks(const Ball* ball, int& Score, Pheon::Application* app);
+	Bricks(Ball* ball, int& Score, Pheon::Application* app);
 
 	void Update();
 
 private:
 
-	const Ball* m_Ball;
+	Ball* m_Ball;
 
 	int& m_Score;
 

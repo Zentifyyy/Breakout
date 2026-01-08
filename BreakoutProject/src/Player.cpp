@@ -14,6 +14,12 @@ void Player::Render()
 		ball.Update();
 	}
 
+	if (SDL_HasRectIntersectionFloat(&m_Rect, &ball.m_Rect)) 
+	{
+		ball.Velocity.y *= -1;
+	}
+
+
 	bricks.Update();
 
 	m_Score.UpdateText(std::to_string(Score).c_str());
